@@ -394,6 +394,7 @@ impl Master {
             target: target.as_mut_ptr(),
             data_size,
             abort_code,
+            complete_access: if complete_access { 1 } else { 0 },
         };
 
         #[cfg(feature = "sncn")]
@@ -488,6 +489,7 @@ impl Master {
     }
 
     pub fn set_application_time(&mut self, app_time: u64) -> Result<()> {
+        let app_time = ec::ec_ioctl_app_time_t { app_time };
         ioctl!(self, ec::ioctl::APP_TIME, &app_time)?;
         Ok(())
     }
