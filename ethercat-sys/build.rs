@@ -10,6 +10,7 @@ fn main() {
                  a checkout of the Ethercat master after running configure",
         );
 
+        println!("cargo:rerun-if-changed={}", path);
         let bindings = bindgen::Builder::default()
             .header(format!("{}/lib/ioctl.h", path))
             .clang_arg(format!("-I{}", path))

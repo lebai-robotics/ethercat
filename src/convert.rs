@@ -6,19 +6,20 @@ use std::ffi::CStr;
 use std::io;
 use std::os::raw::c_char;
 
-pub(crate) fn string_to_foe_name(input: &str) -> Result<[c_char; 32]> {
-    if input.len() > 32 {
+pub(crate) fn string_to_foe_name<const T: usize>(input: &str) -> Result<[c_char; T]> {
+    if input.len() > T {
         let e = io::Error::new(
             io::ErrorKind::InvalidInput,
             format!(
-                "FoE name can have a maximum length of 32, '{}' has {}",
+                "FoE name can have a maximum length of {}, '{}' has {}",
+                T,
                 input,
                 input.len()
             ),
         );
         return Err(Error::Io(e));
     }
-    let mut foe_name: [std::os::raw::c_char; 32] = [0; 32];
+    let mut foe_name: [std::os::raw::c_char; T] = [0; T];
     input
         .as_bytes()
         .iter()

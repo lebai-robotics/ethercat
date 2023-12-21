@@ -12,7 +12,7 @@ license = "MIT/Apache-2.0"
 edition = "2018"
 
 [dependencies]
-derive-new = "0.5"
+derive-new = "0.6"
 ethercat-sys = { path = "ethercat-sys", version = "0.3" }
 ethercat-types = "0.3.1"
 libc = "0.2"
