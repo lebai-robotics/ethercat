@@ -12,7 +12,7 @@ license = "MIT/Apache-2.0"
 edition = "2018"
 
 [dependencies]
-derive-new = "0.6"
+derive-new = "0.7"
 ethercat-sys = { path = "ethercat-sys", version = "0.3" }
 ethercat-types = "0.3.1"
 libc = "0.2"
@@ -23,7 +23,7 @@ thiserror = "1.0"
 
 [dev-dependencies]
 ethercat-esi = "0.2"
-env_logger = "0.10"
+env_logger = {version ="0.11", default-feature=false}
 
 [features]
 default = []
